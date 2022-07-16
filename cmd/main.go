@@ -25,7 +25,7 @@ func main() {
 }
 
 func initConfig() error {
-	viper.AddConfigPath("configs")
+	viper.AddConfigPath(".")
 	viper.SetConfigName(".env")
 	viper.SetConfigType("env")
 
