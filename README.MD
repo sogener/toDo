@@ -7,5 +7,5 @@
 # How to run
 
 1. create env
-2. docker-compose up -d
-3.`go run cmd/main.go`
+2. `docker-compose up -d`
+3. `go run cmd/main.go`
