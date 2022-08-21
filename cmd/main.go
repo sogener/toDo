@@ -20,7 +20,7 @@ func main() {
 	db, err := repository.NewPostgresDB(repository.Config{
 		Host:     viper.GetString("DATABASE_HOST"),
 		Port:     viper.GetString("DATABASE_PORT"),
-		Username: viper.GetString("DATABASE_USERNAME"),
+		Username: viper.GetString("DATABASE_USER"),
 		Password: viper.GetString("DATABASE_PASSWORD"),
 		DBName:   viper.GetString("DATABASE_NAME"),
 		SSLMode:  viper.GetString("DATABASE_SSL_MODE"),
@@ -35,7 +35,7 @@ func main() {
 	handlers := handler.NewHandler(services)
 
 	srv := new(toDo.Server)
-	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
+	if err := srv.Run(viper.GetString("WEB_PORT"), handlers.InitRoutes()); err != nil {
 		logrus.Fatalf("error occured while running http server: %s", err.Error())
 	}
 }

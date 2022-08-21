@@ -27,7 +27,7 @@ func NewPostgresDB(cfg Config) (*sqlx.DB, error) {
 		"postgres",
 		fmt.Sprintf(
 			"host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
-			cfg.Host, cfg.Port, cfg.DBName, cfg.Password, cfg.SSLMode),
+			cfg.Host, cfg.Port, cfg.Username, cfg.DBName, cfg.Password, cfg.SSLMode),
 	)
 
 	if err != nil {
@@ -37,7 +37,7 @@ func NewPostgresDB(cfg Config) (*sqlx.DB, error) {
 	test := db.Ping()
 
 	if test != nil {
-		return nil, err
+		return nil, test
 	}
 
 	return db, nil
